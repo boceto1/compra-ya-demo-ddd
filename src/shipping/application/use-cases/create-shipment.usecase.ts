@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import invariant from 'tiny-invariant';
 
 interface ICreateShipmentUseCase {
-  associatedOrderState: 'confirmed' | 'paid';
+  associatedOrderState: string;
   address: string;
 }
 
 @Injectable()
 export class CreateShipmentUseCase {
-  async execute(input: ICreateShipmentUseCase): Promise<void> {
-    // validate order state
+  execute({
+    address,
+    associatedOrderState,
+  }: ICreateShipmentUseCase): Promise<void> {
+    invariant(
+      associatedOrderState === 'confirmed' || associatedOrderState === 'paid',
+      'The state of associated orden is not valid',
+    );
     // create shipment
     //notify creation of shipment
+    return;
   }
 }

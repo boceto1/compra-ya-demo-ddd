@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { AddressVo } from '../../domain/vo/address.vo';
+import { AddressVo } from '../../domain/vos/address.vo';
 import invariant from 'tiny-invariant';
+import { Shipment } from '../../../shipping/domain/entities/shipment.entity';
 
 interface IAddress {
   addressLine1: string;
@@ -33,6 +34,8 @@ export class CreateShipmentUseCase {
       country,
       instructions,
     );
+
+    const createdShipment = new Shipment(shipmentAddress);
     return;
   }
 }

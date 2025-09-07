@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant';
 import { Shipment } from '../../../shipping/domain/entities/shipment.entity';
 import { EventEmitter2 } from 'eventemitter2';
 
-interface IAddress {
+export interface IAddress {
   addressLine1: string;
   addressLine2: string;
   city: string;
